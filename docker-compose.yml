@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  java-w-docker:
+    image: java-w-docker
+    build: .
+    ports:
+      - 8080:8080
