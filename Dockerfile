@@ -1,6 +1,5 @@
 FROM gradle:5.1.1-jdk8-alpine
-RUN gradle build --stacktrace --info \
-    && dir
+RUN gradle build --stacktrace --info
 
 FROM openjdk:8-jdk-alpine
 VOLUME /tmp
