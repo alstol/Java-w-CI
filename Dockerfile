@@ -1,10 +1,12 @@
-FROM gradle:5.1.1-jdk8-alpine
-RUN gradle build --stacktrace --info
+FROM gradle:5.1.1-jdk8-alpine as build
+RUN gradle build
 
-FROM openjdk:8-jdk-alpine
+FROM build as deploy
+VOLUME /tmp
+RUN ls
 ARG JAVA_OPTS
 ENV JAVA_OPTS=$JAVA_OPTS
-ADD build/libs/Java-w-Docker-0.1.jar java-w-docker.jar
+ADD build/libs/demo-0.1.jar java-w-docker.jar
 EXPOSE 8080
 ENTRYPOINT exec java $JAVA_OPTS -jar java-w-docker.jar
 # For Spring-Boot project, use the entrypoint below to reduce Tomcat startup time.
