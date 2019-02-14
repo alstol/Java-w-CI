@@ -3,8 +3,6 @@ jdk: oraclejdk8
 addons:
   sonarcloud:
     organization: "alstol-github"
-    projectKey: "alstol_Java-w-Docker"
-    host.url: "https://sonarcloud.io"
     token:
       secure: $SONAR_TOKEN 
 script:
